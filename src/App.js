@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useMemo } from 'react';
-import {GoogleMaps, useLoadScript, Marker } from 'google-map-react';
+import { useLoadScript, GoogleMaps, Marker } from '@react-google-maps/api';
 
 // function App() {
 //   return (
@@ -24,8 +24,19 @@ import {GoogleMaps, useLoadScript, Marker } from 'google-map-react';
 //   );
 // }
 
-
 function App() {
-  return <div>Map</div>;
+  const {isLoaded} = useLoadScript({ 
+    
+    GoogleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  });
+
+
+  if ( !isLoaded ) return (<div>Loading ..... </div>); 
+  return <Map />;
+}
+
+function Map(){
+
+  return <div>Map</div>
 }
 export default App;
