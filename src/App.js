@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
+import './styles/globals.css';
 import { useMemo } from 'react';
-import { useLoadScript, GoogleMaps, Marker } from '@react-google-maps/api';
+import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 
 // function App() {
 //   return (
@@ -36,7 +36,22 @@ function App() {
 }
 
 function Map(){
+  const center = useMemo(() => ({lat: 3.15916, lng: 101.71366}), [])
 
-  return <div>Map</div>
+  // return <div>Map</div>;
+  return (
+    <GoogleMap
+        zoom={15}  
+        center={center} 
+        mapContainerClassName= "map-container"
+    >
+
+      <Marker position={{lat: 3.15916, lng: 101.71366}} />    
+
+    </GoogleMap>
+
+
+  );
 }
+
 export default App;
